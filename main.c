@@ -8,7 +8,7 @@ int main(void) {
 	// Adjust Python sys.path
 	PyRun_SimpleString(
 		"import sys\n"
-		"sys.path.append('C:/Path/to/project/python-c-api')\n"
+		"sys.path.append('C:/Users/Path/To/File/python-c-api')\n"
 	);
 
 	// Set the name of the script.

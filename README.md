@@ -125,8 +125,8 @@ Terminates and cleans up the Python interpreter initialized at the beginning of 
 It frees all memory and resources Python used during execution and ensures a clean shutdown. It prevents
 memory leaks and resource locks.
 
-| Call                   | Action / Purpose                  | Purpose                                  |
-| ---------------------- | --------------------------------- |------------------------------------------|
+| Call                   | Action                            | Purpose                                  |
+| ---------------------- |-----------------------------------|------------------------------------------|
 | `PyRun_SimpleString`   | Execute raw Python code from C.   | Configure Python environment dynamically |
 | `PyUnicode_FromString` | Create Python Unicode strings.    | Convert from C strings to Python strings |
 | `Py_DECREF`            | Decrease Python object ref-count. | Memory management (avoids leaks)         |

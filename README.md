@@ -73,7 +73,6 @@ This directly run Python code from a string within the embedded Python interpret
 Python searches the directory of the executable. If your script is elsewhere, you have to tell
 Python where to look. This is a clean way to ensure Python finds your scripts without changing
 working directories.
-
 ```c++
 PyObject *pName = PyUnicode_FromString("py_script");
 ```
@@ -82,7 +81,8 @@ This is needed because Python APIs accept arguments as Python object pointers `P
 Python module names passed into Python's import functions must be Python string objects, not
 simple C strings. This essentially prepares your C strings for the Python API that expects
 Unicode strings.
-
+<br>
+<br>
 ```c++
 Py_DECREF(pName);
 ```
@@ -92,14 +92,16 @@ hits zero, Python knows the object can safely be deleted from memory.
 
 `Py_DECREF()` explicitly tells Python the object is no longer needed, allowing clean-up. It avoids
 memory leads by releasing Python objects that are no longer needed.
-
+<br>
+<br>
 ```c++
 if (pFunc && PyCallable_Check(pFunc))
 ```
 `PyCallable_Check()` verifies that the object, `pFunc`, is callable. We get `pFunc` from 
 `PyObject_GetAttrString()`, which retrieves attributes from Python module or objects. This ensures
 that a call is not attempted on something that is not callable.
-
+<br>
+<br>
 ```c++
 PyObject *pArgs = PyTuple_Pack(1, PyUnicode_FromString("Brandon"));
 ```
@@ -111,20 +113,23 @@ Python tuple objects.
 - `PyUnicode_FromString("Brandon")` creates the argument as a Python string objects.
 
 This is equivalent to calling a Python function with a single argument passed.
-
+<br>
+<br>
 ```c++
 printf("[+] Python function return: %s\n", PyUnicode_AsUTF8(pValue));
 ```
 Converts a Python Unicode string object `pValue` into a UTF-8 encoded C string. This is necessary
 to translate Python strings back into a form usable by C.
-
+<br>
+<br>
 ```c++
 Py_Finalize();
 ```
 Terminates and cleans up the Python interpreter initialized at the beginning of the application `Py_Initialize()`.
 It frees all memory and resources Python used during execution and ensures a clean shutdown. It prevents
 memory leaks and resource locks.
-
+<br>
+<br>
 | Call                   | Action                            | Purpose                                  |
 | ---------------------- |-----------------------------------|------------------------------------------|
 | `PyRun_SimpleString`   | Execute raw Python code from C.   | Configure Python environment dynamically |
